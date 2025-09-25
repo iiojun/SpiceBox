@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slot: one
+  title: MyString
+  authors: MyString
+  presenter: MyString
+  description: MyText
+  contact_email: MyString
+  url: MyString
+  misc: MyString
+  evaluated: false
+  start_time: 2025-07-09 18:01:03
+  end_time: 2025-07-09 18:01:03
+
+two:
+  slot: two
+  title: MyString
+  authors: MyString
+  presenter: MyString
+  description: MyText
+  contact_email: MyString
+  url: MyString
+  misc: MyString
+  evaluated: false
+  start_time: 2025-07-09 18:01:03
+  end_time: 2025-07-09 18:01:03

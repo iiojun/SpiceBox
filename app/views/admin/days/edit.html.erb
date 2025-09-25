@@ -1,0 +1,47 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+                <%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference',
+                edit_admin_conference_path(@day.conference) %></li>
+    <li class="breadcrumb-item">Day</li>
+  </ol>
+</nav>
+
+<h1>SpiceBox Dashboard</h1>
+<h2>Edit the day</h2>
+<p>
+  <%= form_with model: [:admin, @day] do |f| %>
+    <table class='table table-striped'>
+      <tr><td width='10%'><%= f.label 'title' %></td>
+          <td><%= f.text_field :title, class: 'form-control' %></td></tr>
+      <tr><td><%= f.label 'description' %></td>
+          <td><%= f.text_area :description, class: 'form-control' %></td></tr>
+      <tr><td><%= f.label 'seq no' %></td>
+          <td><%= @day.seq_no+1 %></td></tr>
+      <tr><td><%= f.label '# of tracks' %></td>
+      <% if @day.tracks.size == 0 %>
+          <td><%= f.select :num_track, 
+                  [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7]] %></td></tr>
+      <% else %>
+          <td><%= @day.tracks.length %></td></tr>
+      <% end %>
+    </table>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+  <% end %>
+</p>
+<h2>Tracks list</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th>Track</th><th width='5%'>Edit</th></tr>
+    <% @day&.tracks&.each{|t| %>
+    <tr>
+      <td><%= t.title %></td>
+      <td><%= link_to 'edit', edit_admin_track_path(t),
+               class: 'btn btn-sm btn-success'%></td>
+    </tr>
+    <% } %>
+  </table>
+</p>
+

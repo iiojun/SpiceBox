@@ -1,0 +1,18 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+                <%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference',
+          admin_conference_path(@presentation.slot.track.day.conference) %></li>
+    <li class="breadcrumb-item">Presentation</li>
+  </ol>
+</nav>
+
+<h1>SpiceBox Dashboard</h1>
+<h2>Presentation</h2>
+<h3><%= @presentation.title %></h3>
+<%= render 'presentation', p: @presentation %>
+<p>
+Evaluation score: <%= @presentation.eval_score %>
+</p>

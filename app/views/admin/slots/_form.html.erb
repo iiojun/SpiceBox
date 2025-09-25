@@ -1,0 +1,27 @@
+<%= form_with model: model do |f| %>
+  <table class='table table-sm table-striped'>
+    <tr><td width='10%'><%= f.label 'title' %></td>
+        <td><%= f.text_field :title, class: 'form-control' %>
+        </td></tr>
+    <tr><td><%= f.label 'description' %></td>
+        <td><%= f.text_area :description, class: 'form-control' %>
+        </td></tr>
+    <tr><td><%= f.label 'chair' %></td>
+        <td><%= f.text_field :chair, class: 'form-control' %>
+        </td></tr>
+    <tr><td><%= f.label 'room' %></td>
+        <td><%= f.text_field :room, class: 'form-control' %>
+        </td></tr>
+    <tr><td><%= f.label 'session type' %></td>
+        <td><%= f.select :s_type, ['sequential','parallel'] %>
+        </td></tr>
+    <tr><td><%= f.label 'time' %></td>
+        <td><%= f.time_select :start_time, minute_step: 5 %> -
+            <%= f.time_select :end_time, minute_step: 5 %>
+            </td></tr>
+  </table>
+  <% if tid %>
+    <%= f.hidden_field :tid, { value: tid } %>
+  <% end %>
+  <%= f.submit label, class: 'btn btn-primary' %>
+<% end %>

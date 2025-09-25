@@ -1,0 +1,74 @@
+<div class='float-end'>
+<% if @prev %>
+<%= link_to (t 'dictionary.presentation.prev'), presentation_path(@prev) %>&nbsp;
+<% end %>
+<% if @next %>
+<%= link_to (t 'dictionary.presentation.next'), presentation_path(@next) %>
+<% end %>
+</div>
+
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+          <%= link_to 'Conference', 
+               conference_path(@presentation.slot.track.day.conference) %></li>
+    <li class="breadcrumb-item">
+          <%= link_to 'Day', day_path(@presentation.slot.track.day) %></li>
+    <li class="breadcrumb-item">
+          <%= link_to 'Track', track_path(@presentation.slot.track) %></li>
+    <li class="breadcrumb-item">
+          <%= link_to 'Session', slot_path(@presentation.slot) %></li>
+    <li class="breadcrumb-item">Presentation</li>
+  </ol>
+</nav>
+
+<h1><%= @presentation.title %></h1>
+<% if @presentation.slot.s_type == 'sequential' %>
+<p>
+Time slot: <%= @presentation.ptime %>&nbsp;
+</p>
+<% end %>
+
+<%= render 'presentation', p: @presentation %>
+<% if current_user&.is_admin? %>
+
+<p class='text-end'>
+  <%= link_to 'edit', edit_admin_presentation_path %>
+</p>
+<% end %>
+
+<% if @evaluation %>
+<h2><%= t 'dictionary.evaluation.evaltitle' %></h2>
+<p>
+  <%= form_with model: @evaluation, url: evaluation_path, method: 'patch' do |f| %>
+    <table class='table table-sm table-striped'>
+      <%= f.fields_for :judges do |jf| %>
+      <tr><th width='25%'><%= jf.label jf.object.question  %></th>
+        <td width='15%'><%= jf.radio_button :value, 1 %>&nbsp;
+            <%= jf.label '', (t 'dictionary.evaluation.slilow'), value: 1 %></td>
+        <td width='15%'><%= jf.radio_button :value, 2 %>&nbsp;
+            <%= jf.label '', (t 'dictionary.evaluation.moderate'), value: 2 %></td>
+        <td width='15%'><%= jf.radio_button :value, 3 %>&nbsp;
+            <%= jf.label '', (t 'dictionary.evaluation.slihigh'), value: 3 %></td>
+        <td width='15%'><%= jf.radio_button :value, 4 %>&nbsp;
+            <%= jf.label '', (t 'dictionary.evaluation.high'), value: 4 %></td>
+        <td width='15%'><%= jf.radio_button :value, 5 %>&nbsp;
+            <%= jf.label '', (t 'dictionary.evaluation.veryhigh'), value: 5 %></td></tr>
+     <% end %>
+  </table>
+  <div><h4><%= f.label (t 'dictionary.evaluation.comment') %></h4>
+    <p><%= f.text_area :comment, class: 'form-control', size: '40x5' %></p>
+  </div>
+  <%= f.hidden_field :user, value: current_user.id %>
+  <%= f.hidden_field :presentation, value: @presentation.id %>
+  <%= f.submit (@update ? 'Update' : 'Register'), class: 'btn btn-primary' %>
+  <% end %>
+</p>
+<% end %>
+<h2>Comments</h2>
+<ul>
+  <% @presentation.comments&.each{|c| %>
+    <li><%= c %></li>
+  <% } %>
+</ul>

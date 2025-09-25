@@ -1,0 +1,27 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+                <%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item">User</li>
+  </ol>
+</nav>
+<h1>SpiceBox Dashboard</h1>
+<h2>Edit the user</h2>
+<p>
+<%= form_with model: [:admin, @user] do |f| %>
+  <table class='table table-striped'>
+     <tr><td style='width: 10%;'><%= f.label 'fullname' %>&nbsp;</td>
+         <td style='width: 90%;'>
+             <%= f.text_field :fullname, class: 'form-control' %></td></tr>
+     <tr><td style='width: 10%;'><%= f.label 'password' %>&nbsp;</td>
+         <td style='width: 90%;'>
+             <%= f.password_field :password, class: 'form-control' %></td></tr>
+     <tr><td style='width: 10%;'><%= f.label 'role' %>&nbsp;</td>
+         <td style='width: 90%;'>
+             <%= f.text_field :role, class: 'form-control' %></td></tr>
+  </table>
+  Note: username cannot be modified.<br />
+  <%= f.submit 'Update', class: 'btn btn-primary' %>
+<% end %>
+</p>

@@ -1,0 +1,28 @@
+<%= render 'nav' %>
+<h1>SpiceBox Dashboard</h1>
+<p><%= @conference.name %></p>
+<h2>Evaluated presentations</h2>
+<p>
+<% if @evaluated_presentations.length > 0 %>
+<table class='table table-sm table-striped'>
+  <tr><th width='90%'>Presentation</th>
+      <th class='text-end'>Score</th>
+      <th class='text-end'>#</th></tr>
+  <% @evaluated_presentations.each{|p| %>
+  <tr><td><%= link_to p.title, admin_presentation_path(p) %></td>
+      <td class='text-end'><%= sprintf("%6.3f", p.eval_score) %></td>
+      <td class='text-end'><%= p.eval_num %></td></tr>
+  <% } %>
+</table>
+<% end %>
+</p>
+<h2>Not evaluated presentations</h2>
+<p>
+<% if @not_evaluated_presentations.length > 0 %>
+<ul>
+  <% @not_evaluated_presentations.each{|p| %>
+  <li><%= p.title %></li>
+  <% } %>
+</ul>
+<% end %>
+</p>

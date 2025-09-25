@@ -1,0 +1,52 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+                <%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference',
+                edit_admin_conference_path(@track.day.conference) %></li>
+    <li class="breadcrumb-item">
+        <%= link_to 'Day', edit_admin_day_path(@track.day) %></li>
+    <li class="breadcrumb-item">Track</li>
+  </ol>
+</nav>
+
+<h1>SpiceBox Dashboard</h1>
+<h2>Edit the track</h2>
+<p>
+  <%= form_with model: [:admin, @track] do |f| %>
+    <table class='table table-sm table-striped'>
+      <tr><td width='10%'><%= f.label 'title' %></td>
+          <td><%= f.text_field :title, class: 'form-control' %></td></tr>
+      <tr><td><%= f.label 'description' %></td>
+          <td><%= f.text_area :description, class: 'form-control' %></td></tr>
+      <tr><td>Seq No.</td>
+          <td><%= (@track.seq_no.to_i)+1 %></td></tr>
+    </table>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+  <% end %>
+</p>
+<h2>Register a new session</h2>
+<p>
+  <%= render 'admin/slots/form', model: [:admin, Slot.new],
+                                 label: 'Register', tid: @track.id %>
+</p>
+<h2>Sessions list</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th width='15%'>Time</th><th>Session</th>
+        <th width='5%'>Edit</th><th width='5%'>Delete</th></tr>
+    <% @track&.slots&.order('start_time asc').each{|s| %>
+    <tr>
+      <td><%= s.ptime %></td>
+      <td><%= s.title %></td>
+      <td><%= link_to 'edit', edit_admin_slot_path(s),
+                class: 'btn btn-sm btn-success' %></td>
+      <td><%= link_to 'delete', admin_slot_path(s), 
+                data: { turbo_confirm: 'Are you sure?',
+                        turbo_method: :delete },
+                class: 'btn btn-sm btn-secondary' %></td>
+    </tr>
+    <% } %>
+  </table>
+</p>

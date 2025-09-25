@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+            <%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference',
+            edit_admin_conference_path(@presentation.slot.track.day.conference) %></li>
+    <li class="breadcrumb-item">
+        <%= link_to 'Day', edit_admin_day_path(@presentation.slot.track.day) %></li>
+    <li class="breadcrumb-item">
+        <%= link_to 'Track', edit_admin_track_path(@presentation.slot.track) %></li>
+    <li class="breadcrumb-item">
+        <%= link_to 'Slot', edit_admin_slot_path(@presentation.slot) %></li>
+    <li class="breadcrumb-item">Presentation</li>
+  </ol>
+</nav>
+
+<h1>SpiceBox Dashboard</h1>
+<h2>Edit the presentation</h2>
+<p>
+<%= render 'form', model: [:admin, @presentation], label: 'Update', 
+    sid: @presentation.slot.id %>
+</p>

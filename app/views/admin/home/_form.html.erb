@@ -1,0 +1,20 @@
+<%= form_with model: model do |f| %>
+  <table class='table table-striped'>
+     <tr><td style='width: 10%;'><%= f.label 'name' %>&nbsp;</td>
+         <td style='width: 90%;'>
+             <%= f.text_field :name, class: 'form-control' %></td></tr>
+     <tr><td><%= f.label 'description' %></td>
+         <td><%= f.text_area :description, class: 'form-control' %></td></tr>
+     <tr><td><%= f.label 'start date' %></td>
+         <td><%= f.date_select :start_date, class: 'form-control',
+                               disabled: flag %></td></tr>
+     <tr><td><%= f.label '# of days' %></td>
+         <td><%= f.select :duration, [[1,1],[2,2],[3,3],[4,4],[5,5]], {},
+                     disabled: flag %></td></tr>
+  </table>
+  <% if flag %>
+    Note: start date and # of days cannot be modified.<br />
+  <% end %>
+  <%= f.submit label, class: 'btn btn-primary' %>
+<% end %>
+

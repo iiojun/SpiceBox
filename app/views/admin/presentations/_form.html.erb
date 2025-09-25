@@ -1,0 +1,30 @@
+<%= form_with model: model do |f| %>
+  <table class='table table-sm table-striped'>
+    <tr><td width='10%'><%= f.label 'title' %></td>
+        <td><%= f.text_field :title, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'authors' %></td>
+        <td><%= f.text_field :authors, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'presenter' %></td>
+        <td><%= f.text_field :presenter, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'description' %></td>
+        <td><%= f.text_area :description, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'contact email' %></td>
+        <td><%= f.text_field :contact_email, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'url' %></td>
+        <td><%= f.text_field :url, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'misc' %></td>
+        <td><%= f.text_field :misc, class: 'form-control' %></td></tr>
+    <tr><td><%= f.label 'should be evaluated' %></td>
+        <td><%= f.check_box :evaluated %></td></tr>
+    <% if sid && Slot.find(sid)&.s_type == 'sequential' %>
+      <tr><td><%= f.label 'time' %></td>
+          <td><%= f.time_select :start_time, minute_step: 5 %> -
+              <%= f.time_select :end_time, minute_step: 5 %></td></tr>
+    <% end %>
+  </table>
+  <% if sid %>
+    <%= f.hidden_field :sid, { value: sid } %>
+  <% end %>
+  <%= f.submit label, class: 'btn btn-primary' %>
+<% end %>
+

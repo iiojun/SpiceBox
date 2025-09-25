@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item">Top</li>
+  </ol>
+</nav>
+
+<h1><%= t '.title' %></h1>
+<ul>
+ <% @conferences&.each{|conf| %>
+  <li><%= link_to conf.name, conference_path(conf) %></li>
+ <% } %>
+</ul>

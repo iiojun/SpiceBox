@@ -1,0 +1,51 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">
+            <%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference',
+            edit_admin_conference_path(@slot.track.day.conference) %></li>
+    <li class="breadcrumb-item">
+        <%= link_to 'Day', edit_admin_day_path(@slot.track.day) %></li>
+    <li class="breadcrumb-item">
+        <%= link_to 'Track', edit_admin_track_path(@slot.track) %></li>
+    <li class="breadcrumb-item">Slot</li>
+  </ol>
+</nav>
+
+<h1>SpiceBox Dashboard</h1>
+<h2>Edit the session</h2>
+<p>
+  <%= render 'form', model: [:admin, @slot], label: 'Update', tid: nil %>
+</p>
+<h2>Register a new presentation</h2>
+<p>
+  <%= render 'admin/presentations/form', 
+         model: [:admin, Presentation.new(evaluated: true)], 
+                label: 'Register', sid: @slot.id %>
+</p>
+<h2>Presentations list</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <% if @slot.s_type == 'sequential' %>
+      <tr><th width='10%'>Time</th>
+    <% end %>
+    <th>Presentation</th>
+        <th width='5%'>Edit</th><th width='5%'>Delete</th></tr>
+    <% @slot&.presentations&.order(start_time: :asc).each{|p| %>
+    <tr>
+      <% if @slot.s_type == 'sequential' %>
+        <td width='15%'><%= p.ptime %></td>
+      <% end %>
+      <td><%= p.title %></td>
+      <td><%= link_to 'edit', edit_admin_presentation_path(p),
+                class: 'btn btn-sm btn-success' %></td>
+      <td><%= link_to 'delete', admin_presentation_path(p),
+              data: { turbo_confirm: 'Are you sure?',
+                      turbo_method: :delete },
+                class: 'btn btn-sm btn-secondary' %></td>
+    </tr>
+    <% } %>
+  </table>
+</p>
+

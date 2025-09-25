@@ -1,0 +1,18 @@
+<p>
+<table class='table table-striped'>
+  <tr>
+    <th width='10%'><%= t 'dictionary.presentation.authors' %></th>
+                                                           <td><%= p.authors %></td></tr>
+    <th><%= t 'dictionary.presentation.presenter' %></th>  <td><%= p.presenter %></td></tr>
+    <th><%= t 'dictionary.presentation.description' %></th><td><%= p.description %></td></tr>
+<% if p.url %>
+    <th>URL</th>                                           <td><%= p.url %></td></tr>
+<% end %>
+<% if p.misc %>
+    <th><%= t 'dictionary.presentation.misc' %></th>       <td><%= p.misc %></td></tr>
+<% end %>
+<% if current_user&.is_admin? %>
+    <th><%= t 'dictionary.presentation.email' %></th>      <td><%= p.contact_email %></td></tr>
+<% end %>
+</table>
+</p>

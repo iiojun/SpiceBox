@@ -1,0 +1,5 @@
+<ul>
+  <% track.slots&.order(:start_time).each { |s| %>
+    <li><%= render 'session', s: s %></li>
+  <% } %>
+</ul>

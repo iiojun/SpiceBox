@@ -1,0 +1,20 @@
+<%= render 'nav' %>
+<h1>SpiceBox Dashboard</h1>
+<h2>Edit the conference</h2>
+<p>
+  <%= render 'admin/home/form', model: [:admin, @conference], 
+                                label: 'Update', flag: true %>
+</p>
+<h2>Days list</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th>Day</th><th width='5%'>Edit</th><tr>
+    <% @conference&.days&.each{|d| %>
+    <tr>
+      <td><%= d.title %></td>
+      <td><%= link_to 'edit', edit_admin_day_path(d),
+                class: 'btn btn-sm btn-success' %></td>
+    </tr>
+    <% } %>
+  </table>
+</p>

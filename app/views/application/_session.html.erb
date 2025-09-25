@@ -1,0 +1,21 @@
+<% if s.start_time != s.end_time %><%= s.ptime %><% end %>
+<% if s.description == nil && s.presentations.length == 0 %><%= s.title %><p></p>
+<% else %>
+  <%= link_to s.title, slot_path(s) %>
+  <% if s.chair != nil %><%= "#{t 'dictionary.timetable.chair'}: #{s.chair}" %><% end %>
+  <p><%= simple_format(s.description) %></p>
+  <table class="table table-sm table-borderless">
+    <tr><th style='width: 130px'>
+          <% if s.s_type == 'sequential' %><%= t 'dictionary.timetable.timeslot' %><% end %></th>
+        <th><%= t 'dictionary.timetable.titleauthor' %></th></tr>
+    <% s.presentations&.order(:start_time).order(:created_at).each_with_index {|p,i| %>
+      <tr><td><% if s.s_type == 'sequential' %><%= p.ptime %>
+              <% else %>&nbsp; &nbsp; &nbsp; &nbsp; No. <%= i+1 %> &nbsp; <% end %></td>
+          <td><%= link_to p.title, presentation_path(p) %></td></tr>
+      <tr><td></td><td><%= p.authors %></tr>
+      <% if p.misc != nil %>
+        <tr><td></td><td><%= p.misc %></tr>
+      <% end %>
+    <% } %>
+  </table><p></p>
+<% end %>

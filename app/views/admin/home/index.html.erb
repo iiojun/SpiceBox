@@ -1,0 +1,54 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">Admin</li>
+  </ol>
+</nav>
+
+<h1>SpiceBox Dashboard</h1>
+<h2>Register a new conference</h2>
+<p>
+  <%= render 'form', model: [:admin, Conference.new],
+                     label: 'Register', flag: false %>
+</p>
+<% if @conferences != nil %>
+<h2>Conferences list</h2>
+<p>
+<table class='table table-sm table-striped'>
+  <tr><th>Name</th><th width='5%'>Show</th>
+      <th width='5%'>Edit</th><th width='5%'>Delete</th></tr>
+  <% @conferences.each {|c| %>
+    <tr>
+    <td><%= c.name %></td>
+    <td><%= link_to 'show', admin_conference_path(c), 
+             class: 'btn btn-sm btn-primary' %></td>
+    <td><%= link_to 'edit', edit_admin_conference_path(c), 
+             class: 'btn btn-sm btn-success' %></td>
+    <td><%= link_to 'delete', admin_conference_path(c), 
+             class: 'btn btn-sm btn-secondary',
+             data: { turbo_confirm: 'Are you sure?',
+                     turbo_method: :delete } %></td> </tr>
+  <% } %>
+</table>
+</p>
+<% end %>
+<h2>Users list</h2>
+<p>
+<table class='table table-sm table-striped'>
+  <tr><th width='10%'>Username</th>
+      <th>Fullname</th>
+      <th width='15%'>Role</th> 
+      <th width='5%'>Edit</th><th width='5%'>Delete</th></tr>
+  <% @users.each {|u| %>
+    <tr>
+    <td><%= u.username %></td>
+    <td><%= u.fullname %></td>
+    <td><%= u.role %></td>
+    <td><%= link_to 'edit', edit_admin_user_path(u), 
+             class: 'btn btn-sm btn-success' %></td>
+    <td><%= link_to 'delete', admin_user_path(u), 
+             class: 'btn btn-sm btn-secondary',
+             data: { turbo_confirm: 'Are you sure?',
+                     turbo_method: :delete } %></td> </tr>
+  <% } %>
+</table>
