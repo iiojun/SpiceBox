@@ -67,4 +67,4 @@ gem "bootstrap", "~> 5.3.5"
 gem "mini_racer"
 
 gem "devise", "~> 4.9.4"
-gem "octicons_helper", "~> 19.8"
+gem "octicons_helper", "~> 19.18"
