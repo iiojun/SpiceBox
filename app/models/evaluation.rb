@@ -5,11 +5,11 @@ class Evaluation < ApplicationRecord
   belongs_to :presentation
 
   @@questions = [
-      "Is this talk applicable to your school?",
-      "Is this talk interesting?",
-      "Do you find originarity in this talk?",
-      "Did students have fun in this program?",
-      "Is this program useful to acquire the intercultual understanding?"
+      "1. Practical Originality and Ingenuity (Method)",
+      "2. Originality of Practice (Materials)",
+      "3. Educational Effectiveness and Student Learning",
+      "4. Continuity and Development",
+      "5. Clarity of Materials and Presentations"
   ]
 
   def questions
