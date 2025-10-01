@@ -42,6 +42,9 @@ Time slot: <%= @presentation.ptime %>&nbsp;
 <h2><%= t 'dictionary.evaluation.evaltitle' %></h2>
 <p>
   <%= form_with model: @evaluation, url: evaluation_path, method: 'patch' do |f| %>
+  <div>
+    Please refer to <%= link_to "the evaluation criteria", root_path + "images/evaluation_criteria.png" %>.
+  </div>
     <table class='table table-sm table-striped'>
       <%= f.fields_for :judges do |jf| %>
       <tr><th width='25%'><%= jf.label jf.object.question  %></th>
@@ -57,7 +60,7 @@ Time slot: <%= @presentation.ptime %>&nbsp;
             <%= jf.label '', (t 'dictionary.evaluation.veryhigh'), value: 5 %></td></tr>
      <% end %>
   </table>
-  <div><h4><%= f.label (t 'dictionary.evaluation.comment') %></h4>
+  <div><h3><%= f.label (t 'dictionary.evaluation.comment') %></h3>
     <p><%= f.text_area :comment, class: 'form-control', size: '40x5' %></p>
   </div>
   <%= f.hidden_field :user, value: current_user.id %>
