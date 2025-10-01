@@ -1,6 +1,6 @@
 class ConferencesController < ApplicationController
   def index
-    @conferences = Conference.all.order('start_date desc')
+    @conferences = Conference.all.order("start_date desc")
   end
 
   def show

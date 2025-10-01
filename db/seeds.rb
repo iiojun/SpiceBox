@@ -93,4 +93,3 @@ s1 = Slot.create(
   start_time: '2025-08-15 13:00:00',
   end_time: '2025-08-15 15:00:00')
 t1.slots << s1
-

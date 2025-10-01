@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    sessions:      "users/sessions",
+    passwords:     "users/passwords",
+    registrations: "users/registrations"
   }
 
   namespace :admin do
-    root 'home#index'
+    root "home#index"
     resources :conferences,   only: [ :show, :create, :destroy, :edit, :update ]
     resources :days,          only: [ :edit, :update ]
     resources :tracks,        only: [ :edit, :update ]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :users,         only: [ :destroy, :edit, :update ]
   end
 
-  root to: 'conferences#index'
+  root to: "conferences#index"
   resources :conferences, only: [ :show, :index ]
   resources :days, only: [ :show ]
   resources :tracks, only: [ :show ]

@@ -13,15 +13,15 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    return has_keyword?('admin')
+    return has_keyword?("admin")
   end
 
   def is_member?
-    return has_keyword?('member')
+    return has_keyword?("member")
   end
 
   private
   def has_keyword?(key)
-    return role.split(',').map{|x| x.strip}.include?(key)
+    return role.split(",").map { |x| x.strip }.include?(key)
   end
 end

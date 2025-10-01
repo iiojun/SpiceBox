@@ -16,14 +16,14 @@ class Presentation < ApplicationRecord
 
   def eval_score
     num_eval = self.eval_num.to_f
-    (num_eval > 0.0) ? self.evaluations.sum{|e| e.total_score}/num_eval : 0.0
+    (num_eval > 0.0) ? self.evaluations.sum { |e| e.total_score } / num_eval : 0.0
   end
 
   def comments
-    self.evaluations&.map{|e| e.comment.strip }.filter{|x| x != ''}
+    self.evaluations&.map { |e| e.comment.strip }.filter { |x| x != "" }
   end
 
   def comment_strings
-    self.evaluations&.map{|e| e.comment.strip }.filter{|x| x != ''}.join("\n")
+    self.evaluations&.map { |e| e.comment.strip }.filter { |x| x != "" }.join("\n")
   end
 end
