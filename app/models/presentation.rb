@@ -4,7 +4,9 @@ class Presentation < ApplicationRecord
   belongs_to :slot
 
   def ptime
-    start_time.strftime("%H:%M") + ' - ' + end_time.strftime("%H:%M")
+    return (start_time != nil) ?
+      start_time.strftime("%H:%M") + " - " + end_time.strftime("%H:%M") :
+      "not assigned"
   end
 
   def eval_num
