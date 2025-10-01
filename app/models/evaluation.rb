@@ -5,11 +5,11 @@ class Evaluation < ApplicationRecord
   belongs_to :presentation
 
   @@questions = [
-      "1. Practical Originality and Ingenuity (Method)",
-      "2. Originality of Practice (Materials)",
-      "3. Educational Effectiveness and Student Learning",
-      "4. Continuity and Development",
-      "5. Clarity of Materials and Presentations"
+      "Practical Originality and Ingenuity (Method)",
+      "Originality of Practice (Materials)",
+      "Educational Effectiveness and Student Learning",
+      "Continuity and Development",
+      "Clarity of Materials and Presentations"
   ]
 
   def questions
