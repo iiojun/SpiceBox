@@ -43,6 +43,7 @@ en:
       presenter: 'Presenter'
       description: 'Abstract'
       email: 'Email'
+      permission: 'Disclose'
       journal: 'Journal'
       misc: 'Misc'
       jyes: 'Yes'

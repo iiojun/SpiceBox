@@ -67,7 +67,7 @@ class Admin::PresentationsController < Admin::ApplicationController
     params[:presentation].each { |k, v|
       params[:presentation][k] = nil if v.strip == "" }
     params.require(:presentation).permit(:title, :authors, :presenter,
-        :description, :contact_email, :url, :misc, :evaluated, :apply_journal,
-        :start_time, :end_time, :sid)
+        :description, :contact_email, :url, :misc, :evaluated, 
+        :disclose, :apply_journal, :start_time, :end_time, :sid)
   end
 end

@@ -16,6 +16,8 @@
         <td><%= f.text_field :misc, class: 'form-control' %></td></tr>
     <tr><td><%= f.label 'should be evaluated' %></td>
         <td><%= f.check_box :evaluated %></td></tr>
+    <tr><td><%= f.label 'permission to disclose' %></td>
+        <td><%= f.check_box :disclose %></td></tr>
     <% if sid && Slot.find(sid)&.s_type == 'sequential' %>
       <tr><td><%= f.label 'time' %></td>
           <td><%= f.time_select :start_time, minute_step: 5 %> -
