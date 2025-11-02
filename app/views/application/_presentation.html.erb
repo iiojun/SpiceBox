@@ -1,8 +1,12 @@
 <p>
 <table class='table table-striped'>
+<% if p.authors %>
   <tr><th width='10%'><%= t 'dictionary.presentation.authors' %></th>
                                                            <td><%= p.authors %></td></tr>
+<% end %>
+<% if p.presenter %>
   <tr><th><%= t 'dictionary.presentation.presenter' %></th>  <td><%= p.presenter %></td></tr>
+<% end %>
   <tr><th><%= t 'dictionary.presentation.description' %></th><td><%= p.description %></td></tr>
 <% if p.url %>
   <tr><th>URL</th>                                           <td><%= p.url %></td></tr>

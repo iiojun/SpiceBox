@@ -12,7 +12,7 @@
       <tr><td><% if s.s_type == 'sequential' %><%= p.ptime %>
               <% else %>&nbsp; &nbsp; &nbsp; &nbsp; No. <%= i+1 %> &nbsp; <% end %></td>
           <td><%= link_to p.title, presentation_path(p) %></td></tr>
-      <tr><td></td><td><%= p.authors %></tr>
+      <tr><td></td><td><%= (p.authors != nil) ? p.authors : p.presenter %></tr>
       <% if p.misc != nil %>
         <tr><td></td><td><%= p.misc %></tr>
       <% end %>
