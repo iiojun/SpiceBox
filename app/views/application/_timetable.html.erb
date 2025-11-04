@@ -1,6 +1,6 @@
 <ul>
 <% day.tracks.each { |t| %>
-  <li><%= link_to t.title, track_path(t), class: "fs-4" %>
+  <li><h3><%= link_to t.title, track_path(t) %></h3>
       <%= render 'track', track: t %></li>
 <% } %>
 </ul>
