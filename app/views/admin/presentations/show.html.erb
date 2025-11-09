@@ -14,5 +14,5 @@
 <h3><%= @presentation.title %></h3>
 <%= render 'presentation', p: @presentation %>
 <p>
-Evaluation score: <%= @presentation.eval_score %>
+valuation score: <%= sprintf("%6.3f", @presentation.eval_score) %>
 </p>
