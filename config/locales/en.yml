@@ -33,7 +33,7 @@ en:
   dictionary:
     timetable:
       timeslot: 'time slots'
-      titleauthor: 'title and author/presenter(s)'
+      titleauthor: 'titles and authors/presenters'
       chair: 'Chair'
 
     presentation:
