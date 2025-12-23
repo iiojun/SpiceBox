@@ -8,7 +8,9 @@
     <tr><th style='width: 130px'>
           <% if s.s_type == 'sequential' %><%= t 'dictionary.timetable.timeslot' %><% end %></th>
         <th><%= t 'dictionary.timetable.titleauthor' %></th></tr>
-    <% s.presentations&.order(Arel.sql("start_time ASC NULLS LAST, created_at ASC")).each_with_index {|p,i| %>
+    <% s.presentations&
+          .order(Arel.sql("start_time IS NULL, start_time ASC, created_at ASC"))
+          .each_with_index {|p,i| %>
       <tr><td><% if s.s_type == 'sequential' %><%= p.ptime %>
               <% else %>&nbsp; &nbsp; &nbsp; &nbsp; No. <%= i+1 %> &nbsp; <% end %></td>
           <td><%= link_to p.title, presentation_path(p) %></td></tr>
