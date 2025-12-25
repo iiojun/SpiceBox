@@ -20,6 +20,10 @@ class Admin::PresentationsController < Admin::ApplicationController
       flash[:alert] = "Wrong time format."
     else
       p.delete(:sid)
+      yy, mm, dd = date.strip().split("-")
+      p["start_time(1i)"] = p["end_time(1i)"] = yy
+      p["start_time(2i)"] = p["end_time(2i)"] = mm
+      p["start_time(3i)"] = p["end_time(3i)"] = dd
       s.presentations << Presentation.create(p)
       flash[:notice] = "The presentation was registered."
     end
@@ -56,6 +60,10 @@ class Admin::PresentationsController < Admin::ApplicationController
       flash[:alert] = "Wrong time format."
     else
       p.delete(:sid)
+      yy, mm, dd = date.strip().split("-")
+      p["start_time(1i)"] = p["end_time(1i)"] = yy
+      p["start_time(2i)"] = p["end_time(2i)"] = mm
+      p["start_time(3i)"] = p["end_time(3i)"] = dd
       pr.update(p)
       flash[:notice] = "The presentation was updated."
     end

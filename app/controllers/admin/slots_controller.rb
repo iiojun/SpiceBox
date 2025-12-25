@@ -16,7 +16,7 @@ class Admin::SlotsController < Admin::ApplicationController
       flash[:alert] = "Wrong time format."
     else
       p.delete(:tid)
-      yy, mm, dd = date.split("-")
+      yy, mm, dd = date.strip().split("-")
       p["start_time(1i)"] = p["end_time(1i)"] = yy
       p["start_time(2i)"] = p["end_time(2i)"] = mm
       p["start_time(3i)"] = p["end_time(3i)"] = dd
