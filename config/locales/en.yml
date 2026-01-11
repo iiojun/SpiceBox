@@ -40,7 +40,7 @@ en:
       prev: '<-'
       next: '->'
       authors: 'Author(s)'
-      presenter: 'Presenter'
+      presenter: 'Presenter(s)'
       description: 'Abstract'
       email: 'Email'
       permission: 'Disclose'
