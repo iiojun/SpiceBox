@@ -51,7 +51,8 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-#        run: bin/rubocop -f github
+	if: false
+        run: bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest
@@ -98,4 +99,4 @@ jobs:
         with:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
+          uf-no-files-found: ignore
