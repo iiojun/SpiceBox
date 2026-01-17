@@ -15,7 +15,7 @@
   <tr><th><%= t 'dictionary.presentation.misc' %></th>       <td><%= p.misc %></td></tr>
 <% end %>
 <% if current_user&.is_admin? %>
-  <tr><th><%= t 'dictionary.presentation.email' %></th>      <td><%= p.contact_email %></td></tr>
+  <tr><th><%= t 'dictionary.presentation.email' %></th>      <td><%= auto_link(h(p.contact_email)) %></td></tr>
   <tr><th><%= t 'dictionary.presentation.disclose' %></th> 
               <td><%= (p.disclose != nil and p.disclose == true) ? "OK" : "Not yet" %></td></tr>
 <% end %>
